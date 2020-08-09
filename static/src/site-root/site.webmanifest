@@ -1,0 +1,21 @@
+{
+  "short_name": "SsetJS Boilerplate",
+  "name": "SetJS - By State Empire",
+  "description":"SetJS is a rapid design and development system, which provides a lightweight and more stable alternative to today's heavy SPA frameworks.",
+  "icons": [
+    {
+      "src": "/images/common/pwa-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/common/pwa-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "theme_color": "#ffffff"
+}

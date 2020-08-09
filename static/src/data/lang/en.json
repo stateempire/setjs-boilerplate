@@ -1,0 +1,27 @@
+{
+  "navigation": {
+    "header": {
+      "language": "Language"
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "SetJS Boilerplate - By State Empire",
+      "description": "SetJS is a rapid design and development system, which provides a lightweight and more stable alternative to today's heavy SPA frameworks."
+    }
+  },
+  "notFound": {
+    "meta": {
+      "title": "Not Found",
+      "description": "The requested page does not exist"
+    }
+  },
+  "error": {
+    "meta": {
+      "title": "Error",
+      "description": "An error occurred"
+    },
+    "connectionError": "An error occured. Make sure you are connected and try again.",
+    "authError": "You are not authorized to view this page."
+  }
+}

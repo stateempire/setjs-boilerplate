@@ -1,0 +1,21 @@
+<nav data-template='common/navigation' class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" data-href="/">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" data-bind='@route.path:equal,about|toggleClass,active'>
+        <a class="nav-link" data-href="about">About</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bind='@lang.navigation.header.language'></a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" data-act='click', data-func='setLang', data-arg='en'>English</a>
+          <a class="dropdown-item" data-act='click', data-func='setLang', data-arg='es'>Español</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,20 @@
+<div  data-template="common/alert-box" class="modal fade" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" data-bind="title:str,#{app_name}"></h5>
+        <button type="button" class="close" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h6 data-bind="message"></h6>
+        <p class="error" data-bind="errorMsg"></p>
+      </div>
+      <div class="modal-footer">
+        <button data-if="noBtn" type="button" class="btn btn-secondary {o:noCls}" data-act="click" data-func="no" data-bind="noTxt:str,Cancel|t"></button>
+        <button type="button" class="btn btn-primary {o:okCls}" data-act="click" data-func="ok" data-bind="okTxt:str,OK|t"></button>
+      </div>
+    </div>
+  </div>
+</div>
