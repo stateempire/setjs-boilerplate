@@ -47,7 +47,7 @@
     "webpack-stream": "^5.2.1"
   },
   "dependencies": {
-    "@stateempire/setjs": "^2.0.6"
+    "@stateempire/setjs": "^2.0.14"
   },
   "browser": {},
   "browserslist": [

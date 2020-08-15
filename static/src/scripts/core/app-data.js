@@ -1,4 +1,6 @@
 import eventManager, {eventTypes} from 'setbp/kernel/event-manager.js';
+import {batchCall} from 'setbp/utility/calls.js';
+import initSampleEntities from 'entities/sample.js';
 
 export let defData = {};
 
@@ -9,6 +11,8 @@ export let defData = {};
   });
 });
 
-export default function(callbacks) {
-  callbacks.success();
+export default function(opts) {
+  batchCall(opts)
+  .add(initSampleEntities)
+  .go();
 }
