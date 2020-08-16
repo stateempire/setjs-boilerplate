@@ -21,11 +21,10 @@ function listIndex(str) {
   }
 }
 
-function parsePath(_path, _val) {
+function parsePath(path) {
   var parts = [];
   var mark = 0;
   var skip;
-  var {path, val} = processType(_path, _val);
   for (var i = 0; i < path.length; i++) {
     if (skip) {
       if (path[i] == ']') {
@@ -36,7 +35,7 @@ function parsePath(_path, _val) {
     } else if (path[i] == '[') {
       skip = i;
       if (!i) {
-        throw 'Bad object config ' + _path;
+        throw 'Bad object config ' + path;
       }
     } else if (path[i] == '.') {
       addObj();
@@ -44,7 +43,7 @@ function parsePath(_path, _val) {
     }
   }
   addObj();
-  return {parts, val};
+  return parts;
 
   function addObj() {
     if (mark < i) {
@@ -57,8 +56,9 @@ function partIndex(part, arr) {
   return part.list ? part.index != null ? part.index : arr.length : null;
 }
 
-export function storeValue(target, path, _val) {
-  var {parts, val} = parsePath(path, _val);
+export function storeValue(target, _path, _val) {
+  var {path, val} = processType(_path, _val);
+  var parts = parsePath(path);
   var index;
   parts.forEach(function(part, i) {
     let end = i == parts.length - 1;

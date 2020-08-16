@@ -1,19 +1,19 @@
 var gulp = require('gulp');
-var pug = require('gulp-pug');
+// var pug = require('gulp-pug');
 var fileinclude = require('gulp-file-include');
 var replace = require('gulp-replace');
 var plumber = require('gulp-plumber');
 var {paths, settings} = require('../setup.js');
 
-function pugViews() {
-  return gulp.src(paths.src.views + '/page/**/*.pug')
-    .pipe(plumber())
-    .pipe(pug({
-      basedir: paths.src.views,
-      data: settings,
-    }))
-    .pipe(gulp.dest(paths.dest.base));
-}
+// function pugViews() {
+//   return gulp.src(paths.src.views + '/page/**/*.pug')
+//     .pipe(plumber())
+//     .pipe(pug({
+//       basedir: paths.src.views,
+//       data: settings,
+//     }))
+//     .pipe(gulp.dest(paths.dest.base));
+// }
 
 function htmlViews() {
   return gulp.src(paths.src.views + '/page/**/*.html')
@@ -33,5 +33,5 @@ function htmlViews() {
 
 exports.views = gulp.parallel(
   htmlViews,
-  pugViews,
+  // pugViews,
 );

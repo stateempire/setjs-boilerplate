@@ -33,5 +33,5 @@ export function makeQs(params, question) {
       qs += (qs ? '&' : '') + encodeURIComponent(name) + '=' + encodeURIComponent(isArray ? val.join(',') : val);
     }
   });
-  return question && qs ? '?' + qs : qs;
+  return (question && qs) ? '?' + qs : qs;
 }
