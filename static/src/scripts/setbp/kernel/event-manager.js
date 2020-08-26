@@ -17,6 +17,9 @@ var eventManager = {
     var listener = {priority: config.priority || 3, config, method, data, hasData: arguments.length > 3};
     events[type].push(listener);
     sort(events[type], 'priority');
+    if (typeof method != 'function') {
+      throw 'Not a function';
+    }
     return listener;
   },
   removeListener: function (type, listener) {

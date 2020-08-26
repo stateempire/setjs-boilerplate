@@ -46,7 +46,7 @@ $.fn.lightbox = function (opts = {}) {
         opts.carousel.$left = opts.carousel.$left || $('<div class="nav-btn left"></div>').appendTo($btnParent);
         opts.carousel.$right = opts.carousel.$right || $('<div class="nav-btn right"></div>').appendTo($btnParent);
       }
-      lightbox.carousel = (opts.carousel.$el || $inner).carousel(opts.carousel);
+      lightbox.carousel = (opts.carousel.$el || $inner).carousel(opts.carousel).data('carousel');
     }
   }
 

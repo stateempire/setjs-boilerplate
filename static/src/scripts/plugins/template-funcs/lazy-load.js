@@ -1,7 +1,7 @@
-import setjs from '@stateempire/setjs';
+import {addFuncs} from 'core/acts-funcs.js';
 import {lazyPic, makeLazy} from 'setbp/utility/lazy-media.js';
 
-setjs.addFuncs({
+addFuncs({
   lazyPic: function(val, opts) {
     lazyPic(opts.$el);
   },

@@ -90,20 +90,25 @@ export function storeValue(target, _path, _val) {
   function storeInArray(part, end) {
     let tmp = target[index];
     if (part.list) {
-      tmp = Array.isArray(tmp) ? tmp : [];
+      if (part.key) {
+        if (typeof tmp != 'object') {
+          tmp = target[index] = {};
+        }
+        tmp = tmp[part.key] = Array.isArray(tmp[part.key]) ? tmp[part.key] : [];
+      } else {
+        tmp = target[index] = Array.isArray(tmp) ? tmp : [];
+      }
       if (end) {
         tmp[partIndex(part, tmp)] = val;
       }
-      target = target[index] = tmp;
     } else {
-      tmp = typeof tmp == 'object' ? tmp : {};
+      target[index] = tmp = typeof tmp == 'object' ? tmp : {};
       if (end) {
         tmp[part.key] = val;
-        target[index] = tmp;
       } else {
-        target[index] = tmp;
-        target = tmp[part.key] = {};
+        tmp = tmp[part.key] = {};
       }
     }
+    target = tmp;
   }
 }

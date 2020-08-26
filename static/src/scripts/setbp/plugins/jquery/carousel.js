@@ -90,5 +90,5 @@ $.fn.carousel = function (opts) {
     selectSlide(index, true);
   });
 
-  return carousel;
+  return this.data('carousel', carousel);
 };

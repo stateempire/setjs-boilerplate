@@ -22,7 +22,7 @@ function htmlViews() {
       prefix: '@@',
       basepath: paths.src.views
     }))
-    .pipe(replace(/#{([^{}]*)}/g, function(match, group1) {
+    .pipe(replace(/@replace{([^{}]*)}/g, function(match, group1) {
       if (group1 in settings) {
         return settings[group1];
       }
