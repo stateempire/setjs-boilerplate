@@ -47,8 +47,6 @@ function loadFullMedia(item, height) {
         }
       }
       return;
-    } else if (type == 'pic') {
-      processPic();
     } else {
       processImage();
     }
@@ -56,7 +54,7 @@ function loadFullMedia(item, height) {
   }
 
   function mediaLoaded() {
-    $el.addClass('js-loaded');
+    $el.addClass('loaded');
   }
 
   function videoCallback() {
@@ -88,41 +86,12 @@ function loadFullMedia(item, height) {
       }
     }).attr('src', url);
   }
-
-  function processPic() {
-    var $img = $el.find('img');
-    var $sources = $el.find('source').detach();
-    var attempts = 0;
-    $img.on('load.lazy', completeLoad);
-    $sources.each(function() {
-      var $source = $(this);
-      $source.attr('srcset', $source.data('srcset'));
-    });
-    $el.prepend($sources);
-    setTimeout(poll, 80);
-
-    function poll() {
-      if ($img[0].complete || attempts++ > 60) {
-        completeLoad();
-      } else {
-        setTimeout(poll, 500);
-      }
-    }
-
-    function completeLoad() {
-      if (!$el.hasClass('js-loaded')) {
-        $img.off('.lazy').addClass('js-loaded').closest('.lazy-load').addClass('js-loaded');
-        $el.off('.lazy');
-        mediaLoaded();
-      }
-    }
-  }
 }
 
 export function lazyMedia(opts) {
   var {$el} = opts;
-  if (!$el.data('lm')) {
-    $el.data('lm', 1);
+  if (!$el.attr('data-lm')) { // use attribute as other plugins may want to select it using this attribute
+    $el.attr('data-lm', 1);
     processLazy();
   }
   function processLazy() {
@@ -134,10 +103,6 @@ export function lazyMedia(opts) {
       setTimeout(processLazy, 250);
     }
   }
-}
-
-export function lazyPic($el) {
-  lazyMedia({$el, type: 'pic'});
 }
 
 export function lazyImg($el, url) {

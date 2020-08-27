@@ -40,7 +40,7 @@ var eventManager = {
   }
 };
 
-eventManager.addListener(eventTypes.unload, 'em', function() {
+eventManager.addListener(eventTypes.unload, {p: 'em', priority: 5}, function() {
   $.each(events, function(name, list) {
     for (var i = list.length - 1; i >= 0; i--) {
       if (list[i].config.pageOnly) {

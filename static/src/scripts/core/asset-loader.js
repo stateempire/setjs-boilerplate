@@ -9,7 +9,7 @@ export default function(page, route, progress) {
   return function(opts) {
     batchCall($.extend({progress}, opts))
     .add(setjs.ensureTemplates, {urls: setup.templateUrls(page.templates || []), jqErr: 1})
-    .add(loadAssets, {urlSets: (page.getAssets && page.getAssets(route, page)) || page.assets, errMsg})
+    .add(loadAssets, {urlSets: ('getAssets' in page && page.getAssets(route, page)) || page.assets, errMsg})
     .go();
   };
 }

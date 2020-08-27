@@ -43,7 +43,7 @@
     "postcss-nested": "^4.2.3",
     "postcss-simple-vars": "^5.0.2",
     "webpack": "^4.44.1",
-    "webpack-stream": "^5.2.1"
+    "webpack-stream": "^6.0.0"
   },
   "dependencies": {
     "@stateempire/setjs": "^2.1.7"

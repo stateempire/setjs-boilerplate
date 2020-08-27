@@ -62,7 +62,7 @@ $.fn.marquee = function() {
 
   function start() {
     if (marqueePage == pageId) {
-      let notLoaded = $el.find('[data-lm]:not(.js-loaded)').length;
+      let notLoaded = $el.find('[data-lm]:not(.loaded)').length;
       if (notLoaded) {
         setTimeout(start, 800);
       } else {
