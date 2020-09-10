@@ -1,3 +1,4 @@
+import {getProp} from 'setbp/utility/objects.js';
 import pageLoader from 'setbp/kernel/page-loader.js';
 import storage, {storageTypes} from 'setbp/kernel/storage.js';
 import setup from 'config/setup.js';
@@ -11,6 +12,44 @@ export function addApis(apis) {
     }
   });
   $.extend(api, apis);
+}
+
+export function dataGet(url, opts) {
+  ajaxCall($.extend({useData: 1}, opts, {type: 'GET', relativeUrl: url}));
+}
+
+export function dataFunc(url) {
+  return function(opts) {
+    dataGet(url, opts);
+  };
+}
+
+export function jsonSave(url, type, opts) {
+  ajaxCall($.extend({isJSON: 1}, opts, {type, relativeUrl: url}));
+}
+
+export function jsonFunc(url, type = 'POST') {
+  return function(opts) {
+    jsonSave(`${url}${opts.urlSeg || ''}`, type, opts);
+  };
+}
+
+export function getById(url, id = 'id') {
+  return function(opts) {
+    dataGet(`${url}/${getProp(id, opts)}`, opts);
+  };
+}
+
+export function getWithUrlSeg(url) {
+  return function(opts) {
+    dataGet(`${url}${opts.urlSeg || ''}`, opts);
+  };
+}
+
+export function saveById(url, id = 'data.uuid') {
+  return function(opts) {
+    jsonSave(url, getProp(id, opts) ? 'PUT' : 'POST', opts);
+  };
 }
 
 /**

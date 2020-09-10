@@ -1,4 +1,4 @@
-import setjs from '@stateempire/setjs';
+import getComp from 'setbp/template/component.js';
 import {api} from 'core/api-helper.js';
 import {loadImage, getFileMimeType} from 'setbp/utility/assets.js';
 
@@ -18,7 +18,7 @@ var states = {
 $.fn.s3Uploader = function({item, $saveBtn}) {
   var s3Config;
   var data = $.extend({state: item.asset_raw ? states.img : states.init, states}, item);
-  var comp = setjs.getComp('common/s3-uploader', data, {
+  var comp = getComp('common/s3-uploader', data, {
     changeState: function({arg}) {
       data.state = states[arg];
       comp.update();

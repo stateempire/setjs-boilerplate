@@ -1,4 +1,4 @@
-import setjs from '@stateempire/setjs';
+import {setRoute} from 'setbp/kernel/setjs.js';
 import eventManager, {eventTypes} from 'setbp/kernel/event-manager.js';
 import {normalizedEventCoords} from 'setbp/utility/mobile.js';
 
@@ -70,7 +70,7 @@ $.fn.gallery = function() {
     if (e.which == 1 && Date.now() - startTime < 600 && Math.abs(diffX) < 6) {
       var dHref = $(e.target).closest('[data-href]').data('href');
       if (dHref) {
-        setjs.setRoute(dHref);
+        setRoute(dHref);
       }
     }
   }
