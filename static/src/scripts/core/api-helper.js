@@ -67,7 +67,7 @@ export function ajaxCall({isJSON, relativeUrl, type, data, success, error, compl
     success, // res, textStatus, jqXHR
     complete,
     error: function(jqXHR) {
-      if (jqXHR.status === 401 && pageLoader.handleAuthError(type)) {
+      if (jqXHR.status === 401 && pageLoader.handleAuthError(type, function() { ajaxCall(ajaxOpts); })) {
         return;
       }
       var responseObj = jqXHR.responseJSON || {};
