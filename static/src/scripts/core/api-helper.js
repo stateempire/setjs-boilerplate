@@ -56,7 +56,8 @@ export function saveById(url, id = 'data.uuid') {
  * Consolidate Ajax Call
  * @param {Object} opts - The options object
  */
-export function ajaxCall({isJSON, relativeUrl, type, data, success, error, complete}) {
+export function ajaxCall(ajaxOpts) {
+  var {isJSON, relativeUrl, type, data, success, error, complete} = ajaxOpts;
   var token = storage.get(storageTypes.token);
   var headers = token ? {'Authorization': 'Token ' + token} : null;
   var ajaxSettings = {
