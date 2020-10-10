@@ -100,6 +100,9 @@ function getBindingVal(binding, data) {
       val = '';
     } else {
       val = getPropDef(val, data);
+      if (typeof val == 'function') {
+        val = val();
+      }
     }
   }
   return val;
